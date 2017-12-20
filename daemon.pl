@@ -6,6 +6,9 @@ while(1){
 	}else{
 		print "VPNC dead\n";
 		while(1){
+			system("killall vpnc");
+			system("route del default");
+			system("route add default gw 10.21.4.1");
 			open RESOLV,">","/etc/resolv.conf";
 			print RESOLV "nameserver 8.8.8.8\n";
 			close RESOLV;
